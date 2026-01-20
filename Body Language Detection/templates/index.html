@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Body Language Decoder</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='index.css') }}"
+    />
+  </head>
+  <body>
+    <script>
+      // Scroll-triggered animations
+      document.addEventListener("DOMContentLoaded", function () {
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-in");
+            }
+          });
+        }, observerOptions);
+
+        // Observe all sections and feature items
+        const sections = document.querySelectorAll("section");
+        const featureItems = document.querySelectorAll(
+          ".feature-item, .tech-item"
+        );
+
+        sections.forEach((section) => observer.observe(section));
+        featureItems.forEach((item) => observer.observe(item));
+      });
+    </script>
+    <nav>
+      <div class="container">
+        <h1>Body Language Decoder</h1>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/facial">Facial Recognition</a></li>
+          <li><a href="/gestures">Gesture Recognition</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="hero" style="animation: blurIn 1.5s ease forwards">
+      <div class="container">
+        <h1 style="animation: textBlur 2s ease forwards 0.5s">
+          Decode Body Language with AI
+        </h1>
+        <p style="animation: textBlur 2s ease forwards 1s">
+          Experience cutting-edge computer vision technology that interprets
+          human gestures and facial expressions in real-time. Powered by
+          MediaPipe and OpenCV, our application provides accurate recognition
+          for interactive experiences, accessibility, and entertainment.
+        </p>
+        <a
+          href="#features"
+          class="btn"
+          style="animation: whiteGlow 3s ease-in-out infinite"
+          >Explore Features</a
+        >
+      </div>
+    </section>
+
+    <section
+      id="features"
+      class="features"
+      style="animation: fadeInUp 1s ease forwards; animation-delay: 0.5s"
+    >
+      <div class="container">
+        <h2>Key Features</h2>
+        <div class="features-list">
+          <div class="feature-item">
+            <h3>Facial Expression Recognition</h3>
+            <p>
+              Our advanced facial expression recognition system utilizes
+              state-of-the-art machine learning algorithms to analyze facial
+              features in real-time video streams. It accurately detects a range
+              of emotions including happiness, sadness, surprise, anger, and
+              neutrality. This technology is particularly valuable for
+              applications in emotion analysis, user experience research, and
+              interactive media where understanding emotional responses is
+              crucial.
+            </p>
+          </div>
+          <div class="feature-item">
+            <h3>Hand Gesture Recognition</h3>
+            <p>
+              The hand gesture recognition module employs sophisticated computer
+              vision techniques to identify and interpret common hand gestures.
+              Using MediaPipe's hand tracking capabilities, it recognizes
+              gestures such as open palm, fist, peace sign, and thumbs up. This
+              feature enables intuitive gesture-based controls for applications
+              in gaming, virtual reality, and human-computer interaction,
+              providing a seamless and natural way for users to interact with
+              digital systems.
+            </p>
+          </div>
+          <div class="feature-item">
+            <h3>Real-Time Processing</h3>
+            <p>
+              Engineered for performance, our system delivers lightning-fast
+              processing with minimal latency, ensuring smooth and responsive
+              real-time feedback. Optimized for web browsers, it leverages
+              efficient video streaming and processing algorithms to maintain
+              high frame rates even on standard hardware. This real-time
+              capability is essential for applications requiring immediate
+              responses, such as live video analysis, interactive installations,
+              and time-sensitive user interfaces.
+            </p>
+          </div>
+          <div class="feature-item">
+            <h3>Privacy-Focused Design</h3>
+            <p>
+              We prioritize user privacy by ensuring all processing occurs
+              locally on the user's device. No video data or personal
+              information is transmitted to external servers, eliminating
+              concerns about data breaches or unauthorized access. This approach
+              not only protects user privacy but also enables offline
+              functionality, making the application suitable for environments
+              with limited connectivity or strict data security requirements.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="technology"
+      style="animation: fadeInUp 1s ease forwards; animation-delay: 1.5s"
+    >
+      <div class="container">
+        <h2>Technology Stack</h2>
+        <div class="tech-list">
+          <div class="tech-item">
+            <h3>MediaPipe</h3>
+            <p>
+              MediaPipe is Google's open-source framework for building
+              multimodal applied machine learning pipelines. In this project, we
+              utilize MediaPipe's hand tracking solution, which provides robust
+              and efficient hand landmark detection. The framework processes
+              video streams in real-time, identifying 21 key points on each hand
+              to enable accurate gesture recognition. MediaPipe's cross-platform
+              compatibility and optimized performance make it ideal for
+              web-based applications, ensuring low latency and high accuracy
+              even on resource-constrained devices.
+            </p>
+          </div>
+          <div class="tech-item">
+            <h3>OpenCV</h3>
+            <p>
+              OpenCV (Open Source Computer Vision Library) is a comprehensive
+              library of computer vision algorithms and functions. We employ
+              OpenCV for video capture, image processing, and real-time video
+              stream manipulation. Its extensive collection of optimized
+              algorithms handles tasks such as frame preprocessing, color space
+              conversions, and drawing overlays for visual feedback. OpenCV's
+              Python bindings integrate seamlessly with our Flask backend,
+              providing the foundation for efficient computer vision operations
+              across different platforms.
+            </p>
+          </div>
+          <div class="tech-item">
+            <h3>Facial Expression Recognition (FER) Library</h3>
+            <p>
+              The FER library is a deep learning-based facial expression
+              recognition tool built on top of Keras and TensorFlow. It uses
+              pre-trained convolutional neural networks to detect and classify
+              facial expressions from images or video frames. In our
+              implementation, FER analyzes facial landmarks and texture features
+              to identify emotions with high precision. The library's MTCNN face
+              detection ensures reliable face localization, while its emotion
+              classification model provides real-time emotion analysis for
+              interactive applications.
+            </p>
+          </div>
+          <div class="tech-item">
+            <h3>Flask Web Framework</h3>
+            <p>
+              Flask is a lightweight and flexible web framework for Python that
+              serves as the backbone of our web application. We use Flask to
+              handle HTTP requests, manage user sessions, and serve dynamic
+              content. Its modular design allows for easy integration of
+              computer vision components, while Flask-SocketIO enables real-time
+              communication between the server and client. The framework's
+              simplicity and extensibility make it perfect for rapid development
+              of web-based AI applications, providing a clean API for video
+              streaming and user interaction.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="how-it-works"
+      style="animation: fadeInUp 1s ease forwards; animation-delay: 2s"
+    >
+      <div class="container">
+        <h2>How It Works</h2>
+        <p>
+          Our body language decoder operates through a sophisticated pipeline of
+          computer vision and machine learning technologies. When a user
+          accesses the application, the system initializes the camera and begins
+          capturing video frames at high frame rates. Each frame undergoes
+          preprocessing to optimize image quality and reduce noise. For facial
+          recognition, the FER library detects faces and analyzes facial
+          features to classify emotions. Simultaneously, MediaPipe processes
+          hand landmarks to identify gestures. All processing occurs locally on
+          the device, ensuring privacy and low latency. The results are then
+          overlaid on the video stream and displayed in real-time, providing
+          immediate feedback to the user.
+        </p>
+      </div>
+    </section>
+
+    <section
+      class="about"
+      style="animation: fadeInUp 1s ease forwards; animation-delay: 2.5s"
+    >
+      <div class="container">
+        <h2>About This Project</h2>
+        <p>
+          This innovative project represents the convergence of cutting-edge
+          computer vision technologies and web development practices. By
+          combining MediaPipe's advanced hand tracking, OpenCV's robust image
+          processing capabilities, and the FER library's emotion detection
+          algorithms, we've created a comprehensive body language analysis tool.
+          The Flask framework provides a responsive and user-friendly interface,
+          making complex AI technology accessible through a simple web browser.
+          This application demonstrates the potential of real-time computer
+          vision for enhancing human-computer interaction, with applications
+          ranging from accessibility tools and educational software to
+          interactive entertainment and professional training systems.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>
+          &copy; 2025 Body Language Decoder. Built with Flask, OpenCV, and
+          MediaPipe.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

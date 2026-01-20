@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facial Expression Recognition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: black;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 800px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        button {
+            background: linear-gradient(45deg, #3f51b5, #5c6bc0);
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 6px 20px rgba(63, 81, 181, 0.6);
+        }
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        button:active {
+            transform: translateY(-1px);
+        }
+        img {
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            max-width: 100%;
+        }
+        .back-link {
+            margin-top: 20px;
+        }
+        .back-link a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            background: #3f51b5;
+            border-radius: 50px;
+            transition: background 0.3s;
+        }
+        .back-link a:hover {
+            background: #303f9f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>😊 Facial Expression Recognition</h1>
+        <p>Real-time facial emotion detection using AI. Start the camera to see expressions like happy, sad, surprised, angry, or neutral.</p>
+        <div class="controls">
+            <button onclick="startCamera()">Start Camera</button>
+            <button onclick="stopCamera()">Stop Camera</button>
+        </div>
+        <img id="videoFeed" width="600" alt="Video Feed">
+        <div class="back-link">
+            <a href="/">⬅ Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        function startCamera() {
+            fetch('/camera_on');
+            document.getElementById("videoFeed").src = "/video_feed/facial";
+        }
+        function stopCamera() {
+            fetch('/camera_off');
+        }
+    </script>
+</body>
+</html>

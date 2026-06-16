@@ -7,14 +7,15 @@ import cv2
 import mediapipe as mp
 from fer import FER
 import numpy as np
+import certifi
 
 # Flask app
 app = Flask(__name__)
 app.secret_key = "supersecretkey"  # change to strong secret key
 
 # MongoDB config
-app.config["MONGO_URI"] = "mongodb+srv://kapalasuryacharan1:Surya2615@cluster0.pxiqpzy.mongodb.net/mydatabase?retryWrites=true&w=majority"
-mongo = PyMongo(app)
+app.config["MONGO_URI"] = "mongodb+srv://kapalasuryacharan1:R.2qyTRpHgaA9_B@cluster0.ozoe4sw.mongodb.net/mydatabase?retryWrites=true&w=majority"
+mongo = PyMongo(app, tlsCAFile=certifi.where())
 
 # Flask-Login setup
 login_manager = LoginManager()

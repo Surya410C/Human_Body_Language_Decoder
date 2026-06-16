@@ -82,7 +82,7 @@ source .venv/bin/activate
 ### 3. Install dependencies
 
 ```bash
-pip install -r requirements.txt
+pip install flask flask-pymongo flask-login bcrypt opencv-python mediapipe fer numpy certifi pymongo
 ```
 
 ### 4. Configure MongoDB
